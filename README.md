@@ -3,7 +3,7 @@
 Recreation of the Compass primary button, checkbox, and carousel card with Motion-powered hover/press micro-interactions. Built with React + Vite + Motion.
 
 ## Quick start
-- Use Node 20.19.6+ (Vite 7 requires Node 20+).
+- Use Node 20.19.6+ (Vite 7 requires Node 20.19+).
 - Install deps: `npm install`
 - Dev server: `npm run dev`
 - Build: `npm run build`
