@@ -1,0 +1,106 @@
+.checkbox {
+  --cb-size: 24px;
+  --cb-radius: 4px;
+  --cb-bg: #ffffff;
+  --cb-border: #768a9b;
+  --cb-icon: #ffffff;
+  --cb-text: #192838;
+  --cb-helper: #4d5f69;
+  --cb-hover: transparent;
+  --cb-focus: transparent;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: "Public Sans", "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--cb-text);
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.24px;
+}
+
+.checkbox.is-disabled {
+  cursor: not-allowed;
+}
+
+.checkbox__box {
+  position: relative;
+  width: var(--cb-size);
+  height: 26px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox__glow {
+  position: absolute;
+  inset: -1px -2px -2px -2px; /* shift 1px down for visual centering */
+  width: calc(var(--cb-size) + 4px);
+  height: calc(var(--cb-size) + 5px);
+  border-radius: var(--cb-radius);
+  border: 2px solid var(--cb-hover);
+  pointer-events: none;
+  display: none;
+}
+
+.checkbox__core {
+  position: relative;
+  width: var(--cb-size);
+  height: var(--cb-size);
+  border-radius: var(--cb-radius);
+  background: var(--cb-bg);
+  border: var(--cb-border-width, 1px) solid var(--cb-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.checkbox:hover .checkbox__glow {
+  display: block;
+}
+
+.checkbox__core svg {
+  color: var(--cb-icon);
+}
+
+.checkbox__focus {
+  position: absolute;
+  inset: -2px -4px;
+  border-radius: 8px;
+  border: 2px solid var(--cb-focus);
+  pointer-events: none;
+}
+
+.checkbox__content {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checkbox__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cb-text);
+  font-weight: 400;
+}
+
+.checkbox__label--with-icon {
+  gap: 8px;
+}
+
+.checkbox__helper {
+  color: var(--cb-helper);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.checkbox.is-disabled .checkbox__helper,
+.checkbox.is-disabled .checkbox__label {
+  color: var(--cb-text);
+}
