@@ -39,7 +39,7 @@
   position: absolute;
   inset: -1px -2px -2px -2px; /* shift 1px down for visual centering */
   width: calc(var(--cb-size) + 4px);
-  height: calc(var(--cb-size) + 5px);
+  height: calc(var(--cb-size) + 4px);
   border-radius: var(--cb-radius);
   border: 2px solid var(--cb-hover);
   pointer-events: none;
