@@ -3,6 +3,7 @@ import { animate, press } from "motion";
 import Button from "./components/Button";
 import Checkbox from "./components/Checkbox";
 import Carousel from "./components/Carousel";
+import Radio from "./components/Radio";
 import "./App.css";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -24,6 +25,7 @@ function PressBox() {
 
 function App() {
   const [checked, setChecked] = useState(false);
+  const [radioChecked, setRadioChecked] = useState(false);
 
   return (
     <div className="page">
@@ -53,6 +55,7 @@ function App() {
           <div className="examples-controls">
             <Button label="Button" variant="Primary" state="Rest" />
             <Checkbox label="Label" showHelper helperText="Helper message" checked={checked} onChange={setChecked} />
+            <Radio label="Radio" showHelper helperText="Helper message" checked={radioChecked} onChange={() => setRadioChecked((v) => !v)} />
           </div>
           <div className="examples-carousel">
             <Carousel />
