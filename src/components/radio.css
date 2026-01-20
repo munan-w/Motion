@@ -1,7 +1,7 @@
 .radio {
   --rd-size: 24px;
-  --rd-ring: #768a9b;
-  --rd-dot: #007c89;
+  --rd-ring: #2d4157;
+  --rd-dot: #ffffff;
   --rd-label: #192838;
   --rd-helper: #4d5f69;
   --rd-hover: transparent;
@@ -53,7 +53,7 @@
   width: var(--rd-size);
   height: var(--rd-size);
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--rd-bg, #ffffff);
   border: 1px solid var(--rd-ring);
   display: inline-flex;
   align-items: center;
