@@ -25,6 +25,7 @@ const colors = {
   brandHoverBorder: "#007C89",
   focus: "#1D75B2",
   borderDefault: "#768A9B",
+  selectedBg: "#2D4157",
   text: "#192838",
   textSubtle: "#4D5F69",
   disabled: "#BAC7CE",
@@ -72,6 +73,7 @@ export default function Radio({
     if (isDisabled) {
       return {
         ring: colors.disabled,
+        bg: colors.white,
         dot: colors.white,
         label: colors.disabled,
         helper: colors.textSubtle,
@@ -83,6 +85,7 @@ export default function Radio({
     if (isError) {
       return {
         ring: colors.danger,
+        bg: colors.white,
         dot: colors.white,
         label: colors.text,
         helper: colors.danger,
@@ -94,8 +97,9 @@ export default function Radio({
     const selected = currentChecked;
 
     return {
-      ring: selected ? colors.brand : isHover ? colors.brandHoverBorder : colors.borderDefault,
-      dot: colors.brand,
+      ring: selected ? colors.selectedBg : isHover ? colors.brandHoverBorder : colors.borderDefault,
+      bg: selected ? colors.selectedBg : colors.white,
+      dot: colors.white,
       label: colors.text,
       helper: colors.textSubtle,
       focusRing: isFocus ? colors.focus : undefined,
@@ -122,6 +126,7 @@ export default function Radio({
       className={computedClass}
       style={{
         ["--rd-ring" as string]: palette.ring,
+        ["--rd-bg" as string]: palette.bg,
         ["--rd-dot" as string]: palette.dot,
         ["--rd-label" as string]: palette.label,
         ["--rd-helper" as string]: palette.helper,
