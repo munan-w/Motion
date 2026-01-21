@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { animate, press } from "motion";
 import Button from "./components/Button";
+import AIButton from "./components/AIButton";
 import Checkbox from "./components/Checkbox";
 import Carousel from "./components/Carousel";
 import Radio from "./components/Radio";
@@ -54,6 +55,7 @@ function App() {
         <div className="single-row dual examples-row">
           <div className="examples-controls">
             <Button label="Button" variant="Primary" state="Rest" />
+            <AIButton label="Join BECU" />
             <Checkbox label="Label" showHelper helperText="Helper message" checked={checked} onChange={setChecked} />
             <Radio label="Radio" showHelper helperText="Helper message" checked={radioChecked} onChange={() => setRadioChecked((v) => !v)} />
           </div>
