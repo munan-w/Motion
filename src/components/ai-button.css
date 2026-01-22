@@ -12,8 +12,9 @@
 }
 
 .ai-button {
-  --ai-btn-bg: #007c89;
-  --ai-btn-text: #ffffff;
+  --ai-btn-bg-start: #FFFFFF;
+  --ai-btn-bg-end: #EEF7F9;
+  --ai-btn-text: #007c89;
   --ai-btn-focus-ring: #1d75b2;
 
   position: relative;
@@ -23,7 +24,7 @@
   border: 4px solid transparent;
   border-radius: 999px;
   background:
-    linear-gradient(#007c89, #007c89) padding-box,
+    linear-gradient(180deg, var(--ai-btn-bg-start), var(--ai-btn-bg-end)) padding-box,
     conic-gradient(from var(--border-angle), #047E8A, #007c89, #A8D7D0, #ecf7f3, #F8FCFA, #ecf7f3, #A8D7D0, #007c89, #047E8A) border-box;
   color: var(--ai-btn-text);
   cursor: pointer;
@@ -39,10 +40,10 @@
   isolation: isolate;
   overflow: visible;
 
-  /* Initial animation: rotate twice (800ms per loop) then fade out */
+  /* Initial animation: rotate twice (1.5s per loop) then fade out - slow and smooth */
   animation:
-    border-beam-rotate 800ms linear 2,
-    border-beam-fade-out 0.5s ease-out 1.6s forwards;
+    border-beam-rotate 1.5s linear 2,
+    border-beam-fade-out 0.8s ease-out 3s forwards;
 }
 
 .ai-button__content {
@@ -78,10 +79,10 @@
   pointer-events: none;
   opacity: 0;
 
-  /* Animation: rotate twice (800ms per loop) then fade out */
+  /* Animation: rotate twice (1.5s per loop) then fade out - slow and smooth */
   animation:
-    border-beam-rotate 800ms linear 2,
-    border-beam-fade-out 0.5s ease-out 1.6s forwards;
+    border-beam-rotate 1.5s linear 2,
+    border-beam-fade-out 0.8s ease-out 3s forwards;
 }
 
 /* Rotate animation for the gradient beam */
@@ -109,8 +110,8 @@
 .ai-button:hover .ai-button__border {
   opacity: var(--border-opacity);
   animation:
-    border-beam-rotate 800ms linear 2,
-    border-beam-fade-out 0.5s ease-out 1.6s forwards;
+    border-beam-rotate 1.5s linear 2,
+    border-beam-fade-out 0.8s ease-out 3s forwards;
 }
 
 /* Focus state */
