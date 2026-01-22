@@ -1,0 +1,134 @@
+/* CSS @property for animating conic-gradient angle */
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --border-opacity {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: false;
+}
+
+.ai-button {
+  --ai-btn-bg-start: #FFFFFF;
+  --ai-btn-bg-end: #EEF7F9;
+  --ai-btn-text: #007c89;
+  --ai-btn-focus-ring: #1d75b2;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, var(--ai-btn-bg-start), var(--ai-btn-bg-end)) padding-box,
+    conic-gradient(from var(--border-angle), #047E8A, #007c89, #A8D7D0, #ecf7f3, #F8FCFA, #ecf7f3, #A8D7D0, #007c89, #047E8A) border-box;
+  color: var(--ai-btn-text);
+  cursor: pointer;
+  font-family: "Public Sans", "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 12px 20px;
+  min-height: 48px;
+  text-decoration: none;
+  transition: transform 120ms ease;
+  isolation: isolate;
+  overflow: visible;
+
+  /* Initial animation: rotate twice (1.5s per loop) then fade out - slow and smooth */
+  animation:
+    border-beam-rotate 1.5s linear 2,
+    border-beam-fade-out 0.8s ease-out 3s forwards;
+}
+
+.ai-button__content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ai-button__label {
+  white-space: nowrap;
+}
+
+/* Border beam element - used to re-trigger animation on hover */
+.ai-button__border {
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  padding: 4px;
+  background: conic-gradient(
+    from var(--border-angle),
+    #047E8A, #007c89, #A8D7D0, #ecf7f3, #F8FCFA, #ecf7f3, #A8D7D0, #007c89, #047E8A
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+
+  /* Animation: rotate twice (1.5s per loop) then fade out - slow and smooth */
+  animation:
+    border-beam-rotate 1.5s linear 2,
+    border-beam-fade-out 0.8s ease-out 3s forwards;
+}
+
+/* Rotate animation for the gradient beam */
+@keyframes border-beam-rotate {
+  0% {
+    --border-angle: 0deg;
+  }
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+/* Fade out animation after initial loops complete */
+@keyframes border-beam-fade-out {
+  0% {
+    --border-opacity: 1;
+  }
+  100% {
+    --border-opacity: 0;
+  }
+}
+
+/* Hover state: re-trigger animation on border element */
+.ai-button.is-hovered .ai-button__border,
+.ai-button:hover .ai-button__border {
+  opacity: var(--border-opacity);
+  animation:
+    border-beam-rotate 1.5s linear 2,
+    border-beam-fade-out 0.8s ease-out 3s forwards;
+}
+
+/* Focus state */
+.ai-button:focus-visible,
+.ai-button.is-focused {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ai-btn-focus-ring);
+}
+
+/* Disabled state */
+.ai-button.is-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.ai-button.is-disabled .ai-button__border {
+  animation: none;
+  opacity: 0;
+}
